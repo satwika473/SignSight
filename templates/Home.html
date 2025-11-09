@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SignSight</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='Home.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='Navbar.css') }}">
+</head>
+<body>
+<nav class="navbar">
+    <div class="navbar-logo" onclick="window.location.href='/'" style="cursor:pointer;">
+      <span class="logo-icon">🚦</span> SignSight
+    </div>
+
+    <!-- Hamburger toggle button -->
+    <button class="navbar-toggle" id="navbarToggle">&#9776;</button>
+
+    <!-- Links -->
+    <ul class="navbar-links" id="navbarLinks">
+      <li><a href="/">Home</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/methodology">Methodology</a></li>
+      <li><a href="/datasets">Datasets</a></li>
+    </ul>
+
+    <!-- Buttons -->
+    <div class="navbar-buttons" id="navbarButtons">
+      <button class="btn-get-started" onclick="scrollToSection('achat')">Quick Test</button>
+    </div>
+  </nav>
+
+  <script>
+    // Toggle menu for mobile
+    const toggleBtn = document.getElementById("navbarToggle");
+    const links = document.getElementById("navbarLinks");
+    const buttons = document.getElementById("navbarButtons");
+    let isOpen = false;
+
+    toggleBtn.addEventListener("click", () => {
+      isOpen = !isOpen;
+      links.classList.toggle("show");
+      buttons.classList.toggle("show");
+      toggleBtn.innerHTML = isOpen ? "&times;" : "&#9776;";
+    });
+  </script>
+
+
+ 
+ 
+ 
+
+  <!-- Section 1: Traffic Sign Hero -->
+  <!-- <div class="section1">
+    <div class="main">
+      <div class="txt">
+        <h2>SignSight — Real-time Traffic Sign Recognition</h2>
+        <p>Instantly detect and identify traffic signs from images. Improve road safety, assist drivers, and power smart city applications with our lightweight AI model.</p>
+        <div class="buttons">
+          <button class="button" onclick="window.location.href='/upload'">Try Traffic Sign ▶️</button>
+        </div>
+      </div>
+      <div class="pictures">
+        <div class="img" id="img1"></div>
+      </div>
+    </div>
+  </div> -->
+   <header class="hero">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h1>SignSight — Recognize traffic signs instantly</h1>
+      <p> A Robust Deep Vision Framework for Real-Time Perception of Traffic Sign Under Adverse Weather Conditions</p>
+      <button class="cta" onclick="scrollToSection('achat')">Try Sign Detection</button>
+    </div>
+  </header>
+
+  <!-- SECTION AVANTAGES -->
+  <section class="benefits">
+    <h2>Why SignSight?</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>🚦 High accuracy</h3>
+        <p>Trained on common traffic sign classes to deliver reliable identification in real-world photos.</p>
+      </div>
+      <div class="card">
+        <h3>⚡ Low latency</h3>
+        <p>Small input size and optimized preprocessing make predictions fast on edge devices.</p>
+      </div>
+      <div class="card">
+        <h3>� Easy integration</h3>
+        <p>Simple HTTP endpoint — upload images to <code>/upload</code> and receive label + confidence JSON.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION FORMATION -->
+  <section class="program">
+    <h2>How it works</h2>
+    <ul>
+      <li>Upload an image of a traffic sign using the upload page.</li>
+      <li>The server preprocesses the image and runs the Keras model.</li>
+      <li>You get back the predicted sign label and a confidence score; low-confidence results are flagged.</li>
+    </ul>
+  </section>
+
+  <!-- SECTION ACHAT -->
+  <section class="pricing" id="achat">
+    <h2>Try SignSight</h2>
+    <div class="offer">
+      <h3>Test the model — upload a sign image</h3>
+      <p class="price">Free to try <span class="old-price"></span></p>
+      <p class="limited">No installation required — use the web upload for quick testing.</p>
+      
+      <!-- Inline Upload Form -->
+      <div class="upload-section">
+        <label class="custom-file-upload">
+          <input type="file" id="fileInput" accept="image/*" />
+          Choose File
+        </label>
+        <span id="fileName" class="file-name"></span>
+        
+        <div id="imagePreview" class="image-preview" style="display: none;">
+          <img id="previewImg" alt="Traffic Sign Preview" style="max-width: 200px; max-height: 200px; border-radius: 8px; margin: 10px 0;" />
+        </div>
+        
+        <button class="cta" id="predictBtn">Predict Sign</button>
+        <p id="result" class="prediction-result" style="margin-top: 15px; font-weight: bold;"></p>
+      </div>
+      
+      <p class="secure">Results include predicted label and confidence score</p>
+    </div>
+  </section>
+
+  <!-- SECTION TEMOIGNAGES -->
+  <section class="testimonials">
+    <h2>What users say</h2>
+    <div class="cards">
+      <div class="card">
+        <p>"Quick and accurate — integrated SignSight into our driver-assist prototype in minutes."</p>
+        <h4>— A. Developer</h4>
+      </div>
+      <div class="card">
+        <p>"Lightweight and fast. Great for edge deployments."</p>
+        <h4>— B. Researcher</h4>
+      </div>
+      <div class="card">
+        <p>"Easy API and predictable results — saved us development time."</p>
+        <h4>— C. City Planner</h4>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2 -->
+ 
+ <!-- Section 3 -->
+  <div class="section2" id="about">
+    {% include 'Contact.html' %}
+  </div>
+
+  <script>
+    // Upload functionality variables
+    const BACKEND_URL = "/predict";
+    let selectedFile = null;
+
+    const fileInput = document.getElementById("fileInput");
+    const fileName = document.getElementById("fileName");
+    const imagePreview = document.getElementById("imagePreview");
+    const previewImg = document.getElementById("previewImg");
+    const predictBtn = document.getElementById("predictBtn");
+    const resultText = document.getElementById("result");
+
+    // File input change handler
+    fileInput.addEventListener("change", (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        selectedFile = file;
+        fileName.textContent = file.name;
+        previewImg.src = URL.createObjectURL(file);
+        imagePreview.style.display = "block";
+        resultText.innerText = "";
+      }
+    });
+
+    // Predict button click handler
+    predictBtn.addEventListener("click", async () => {
+      if (!selectedFile) {
+        alert("Please upload a traffic sign image first!");
+        return;
+      }
+
+      resultText.innerText = "🔍 Predicting... Please wait.";
+      let formData = new FormData();
+      formData.append("image", selectedFile);
+
+      try {
+        let res = await fetch(BACKEND_URL, { method: "POST", body: formData });
+        let data = await res.json();
+
+        if (res.ok && data.prediction) {
+          let predictionText = "";
+
+          if (data.prediction === "Low confidence") {
+            predictionText = `⚠️ ${data.message}\nConfidence: ${(data.confidence * 100).toFixed(2)}%`;
+          } else {
+            predictionText = `🚦 Predicted Sign: ${data.prediction}\n🎯 Confidence: ${(data.confidence * 100).toFixed(2)}%`;
+          }
+
+          resultText.innerText = predictionText;
+        } else {
+          resultText.innerText = "❌ Error: " + (data.error || "Unknown error");
+        }
+      } catch (err) {
+        console.error(err);
+        resultText.innerText = "❌ Failed to connect to server.";
+      }
+    });
+
+    // Smooth scroll function for the CTA button
+    function scrollToSection(sectionId) {
+      document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+
+</body>
+</html>

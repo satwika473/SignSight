@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Datasets - SignSight</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='Home.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='Navbar.css') }}">
+  
+  <!-- Traffic Sign Background Styles -->
+  <style>
+    body {
+      position: relative;
+      overflow-x: hidden;
+      background: #ffffff;
+    }
+    
+    body::before {
+      display: none;
+    }
+    
+    /* Traffic Sign Icons Floating Animation */
+    .traffic-signs-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 9999;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    
+    .sign-icon {
+      position: absolute;
+      opacity: 0.8;
+      animation: float 15s infinite linear;
+      font-size: 3rem;
+      filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+    }
+    
+    .sign-icon:nth-child(1) { left: 10%; animation-delay: 0s; }
+    .sign-icon:nth-child(2) { left: 20%; animation-delay: 3s; }
+    .sign-icon:nth-child(3) { left: 30%; animation-delay: 6s; }
+    .sign-icon:nth-child(4) { left: 40%; animation-delay: 9s; }
+    .sign-icon:nth-child(5) { left: 50%; animation-delay: 12s; }
+    .sign-icon:nth-child(6) { left: 60%; animation-delay: 15s; }
+    .sign-icon:nth-child(7) { left: 70%; animation-delay: 18s; }
+    .sign-icon:nth-child(8) { left: 80%; animation-delay: 21s; }
+    .sign-icon:nth-child(9) { left: 90%; animation-delay: 24s; }
+    
+    @keyframes float {
+      0% { 
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% { 
+        opacity: 0.9;
+      }
+      90% { 
+        opacity: 0.9;
+      }
+      100% { 
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+      }
+    }
+    
+    /* Enhanced section backgrounds with traffic sign themes */
+    .benefits {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 15px;
+      margin: 2rem 0;
+      padding: 2rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      border: 2px solid #FFD700;
+    }
+    
+    .program {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 15px;
+      margin: 2rem 0;
+      padding: 2rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      border: 2px solid #dc3545;
+    }
+    
+    .testimonials {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 15px;
+      margin: 2rem 0;
+      padding: 2rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      border: 2px solid #007bff;
+    }
+    
+    .pricing {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 15px;
+      margin: 2rem 0;
+      padding: 2rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      border: 2px solid #28a745;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Floating Traffic Sign Icons Background -->
+<!-- <div class="traffic-signs-bg">
+  <div class="sign-icon">🛑</div>
+  <div class="sign-icon">⚠️</div>
+  <div class="sign-icon">🚫</div>
+  <div class="sign-icon">➡️</div>
+  <div class="sign-icon">⬅️</div>
+  <div class="sign-icon">🔄</div>
+  <div class="sign-icon">🚸</div>
+  <div class="sign-icon">🚧</div>
+  <div class="sign-icon">🚦</div>
+</div> -->
+
+<nav class="navbar">
+    <div class="navbar-logo" onclick="window.location.href='/'" style="cursor:pointer;">
+      <span class="logo-icon">🚦</span> SignSight
+    </div>
+
+    <!-- Hamburger toggle button -->
+    <button class="navbar-toggle" id="navbarToggle">&#9776;</button>
+
+    <!-- Links -->
+    <ul class="navbar-links" id="navbarLinks">
+      <li><a href="/">Home</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/methodology">Methodology</a></li>
+      <li><a href="/datasets">Datasets</a></li>
+    </ul>
+
+    <!-- Buttons -->
+    <div class="navbar-buttons" id="navbarButtons">
+      <button class="btn-get-started" onclick="window.location.href='/#achat'">Quick Test</button>
+    </div>
+  </nav>
+
+  <script>
+    // Toggle menu for mobile
+    const toggleBtn = document.getElementById("navbarToggle");
+    const links = document.getElementById("navbarLinks");
+    const buttons = document.getElementById("navbarButtons");
+    let isOpen = false;
+
+    toggleBtn.addEventListener("click", () => {
+      isOpen = !isOpen;
+      links.classList.toggle("show");
+      buttons.classList.toggle("show");
+      toggleBtn.innerHTML = isOpen ? "&times;" : "&#9776;";
+    });
+  </script>
+
+  <!-- Datasets Content -->
+  <section class="benefits">
+    <h2>📊 Training Datasets</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>🇩🇪 German Traffic Sign Dataset</h3>
+        <p>Primary dataset with 43 traffic sign classes and over 50,000 images, providing comprehensive coverage of European traffic signs.</p>
+      </div>
+      <div class="card">
+        <h3>🌍 International Signs</h3>
+        <p>Additional datasets from various countries to ensure global applicability and cross-cultural sign recognition.</p>
+      </div>
+      <div class="card">
+        <h3>🔄 Data Augmentation</h3>
+        <p>Synthetic data generation through rotation, scaling, brightness adjustment, and noise addition to improve model robustness.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="program">
+    <h2>Dataset Statistics</h2>
+    <ul>
+      <li>📈 <strong>Total Images:</strong> 50,000+ traffic sign images</li>
+      <li>🏷️ <strong>Classes:</strong> 43 distinct traffic sign categories</li>
+      <li>📐 <strong>Resolution:</strong> Variable input, normalized to 30x30</li>
+      <li>🔀 <strong>Split:</strong> 70% training, 20% validation, 10% testing</li>
+      <li>🌈 <strong>Conditions:</strong> Various lighting, weather, and viewing angles</li>
+    </ul>
+  </section>
+
+  <section class="testimonials">
+    <h2>Sign Categories</h2>
+    <div class="cards">
+      <div class="card">
+        <p><strong>Speed Limits:</strong> 20, 30, 50, 60, 70, 80, 100, 120 km/h</p>
+        <p><strong>End Speed Limits:</strong> Various speed limit end signs</p>
+        <h4>— Speed Control</h4>
+      </div>
+      <div class="card">
+        <p><strong>Prohibitive:</strong> No passing, No entry, No vehicles</p>
+        <p><strong>Warning:</strong> Dangerous curves, Road work, Pedestrians</p>
+        <h4>— Safety Signs</h4>
+      </div>
+      <div class="card">
+        <p><strong>Mandatory:</strong> Turn right/left, Go straight, Roundabout</p>
+        <p><strong>Priority:</strong> Yield, Stop, Priority road</p>
+        <h4>— Directional</h4>
+      </div>
+    </div>
+  </section>
+
+  <section class="pricing">
+    <h2>Data Quality & Processing</h2>
+    <div class="offer">
+      <h3>🔍 Quality Assurance</h3>
+      <p class="price">Manual Verification</p>
+      <p class="limited">⚡ All images manually reviewed and labeled by experts</p>
+      <p class="secure">🔒 Consistent labeling standards across all categories</p>
+    </div>
+  </section>
+
+</body>
+</html>

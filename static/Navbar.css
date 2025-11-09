@@ -1,0 +1,246 @@
+/* Navbar CSS for SignSight */
+:root {
+  --gold-primary: #FFD700;
+  --gold-secondary: #FFA500;
+  --gold-dark: #B8860B;
+  --black-primary: #000000;
+  --black-secondary: #1a1a1a;
+  --black-light: #333333;
+  --gradient-gold-black: linear-gradient(135deg, #FFD700 0%, #FFA500 50%, #000000 100%);
+  --gradient-black-gold: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #FFD700 100%);
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--gradient-black-gold);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  width: 100%;
+  box-shadow: 0 4px 20px rgba(255, 215, 0, 0.3);
+  padding: 1rem 2rem;
+  border-bottom: 3px solid var(--gold-primary);
+  backdrop-filter: blur(10px);
+}
+
+.navbar-logo {
+  font-size: 2rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  color: var(--gold-primary);
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.navbar-logo:hover {
+  transform: scale(1.05);
+  text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
+}
+
+.logo-icon {
+  font-size: 2.5rem;
+  margin-right: 12px;
+  filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.7));
+}
+
+/* Hamburger button */
+.navbar-toggle {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: var(--gold-primary);
+  transition: all 0.3s ease;
+}
+
+.navbar-toggle:hover {
+  color: white;
+  transform: scale(1.1);
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+  justify-content: center;
+}
+
+.navbar-links li {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-links a {
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  position: relative;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.navbar-links a:hover {
+  background: var(--gradient-gold-black);
+  color: white;
+  border: 2px solid var(--gold-primary);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(255, 215, 0, 0.3);
+}
+
+.navbar-links a:active {
+  transform: translateY(-1px);
+}
+
+.navbar-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn-get-started {
+  background: var(--gradient-gold-black);
+  border: 2px solid var(--gold-primary);
+  padding: 0.8rem 1.5rem;
+  color: white;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.2);
+}
+
+.btn-get-started:hover {
+  background: var(--gradient-black-gold);
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+}
+
+.btn-get-started:active {
+  transform: translateY(-1px) scale(1.02);
+}
+
+/* Mobile view */
+@media (max-width: 768px) {
+  .navbar {
+    flex-wrap: wrap;
+    padding: 0.8rem 1rem;
+  }
+
+  .navbar-logo {
+    font-size: 1.5rem;
+  }
+
+  .logo-icon {
+    font-size: 2rem;
+    margin-right: 8px;
+  }
+
+  .navbar-toggle {
+    display: block;
+    order: 2;
+  }
+
+  .navbar-links,
+  .navbar-buttons {
+    width: 100%;
+    flex-direction: column;
+    display: none;
+    background: var(--gradient-black-gold);
+    padding: 1rem 0;
+    border-top: 2px solid var(--gold-primary);
+    margin-top: 1rem;
+    border-radius: 8px;
+    order: 3;
+  }
+
+  .navbar-links.show,
+  .navbar-buttons.show {
+    display: flex;
+  }
+
+  .navbar-links {
+    gap: 0.5rem;
+  }
+
+  .navbar-links a {
+    width: 90%;
+    text-align: center;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+
+  .navbar-buttons {
+    gap: 0.5rem;
+    padding: 0 1rem;
+  }
+
+  .btn-get-started {
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0.5rem;
+  }
+
+  .navbar-logo {
+    font-size: 1.2rem;
+  }
+
+  .logo-icon {
+    font-size: 1.8rem;
+    margin-right: 6px;
+  }
+
+  .navbar-links a {
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+
+  .btn-get-started {
+    font-size: 0.9rem;
+    padding: 0.8rem;
+  }
+}
+
+/* Active page styling */
+.navbar-links a.active {
+  background: var(--gradient-gold-black);
+  border: 2px solid var(--gold-primary);
+  color: white;
+}
+
+/* Smooth scrolling for anchor links */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Ensure body has proper top padding for fixed navbar */
+body {
+  padding-top: 100px;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-top: 80px;
+  }
+}

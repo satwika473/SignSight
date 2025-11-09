@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Methodology - SignSight</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='Home.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='Navbar.css') }}">
+</head>
+<body>
+<nav class="navbar">
+    <div class="navbar-logo" onclick="window.location.href='/'" style="cursor:pointer;">
+      <span class="logo-icon">🚦</span> SignSight
+    </div>
+
+    <!-- Hamburger toggle button -->
+    <button class="navbar-toggle" id="navbarToggle">&#9776;</button>
+
+    <!-- Links -->
+    <ul class="navbar-links" id="navbarLinks">
+      <li><a href="/">Home</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/methodology">Methodology</a></li>
+      <li><a href="/datasets">Datasets</a></li>
+    </ul>
+
+    <!-- Buttons -->
+    <div class="navbar-buttons" id="navbarButtons">
+     
+      <button class="btn-get-started" onclick="window.location.href='/#achat'">Quick Test</button>
+    </div>
+  </nav>
+
+  <script>
+    // Toggle menu for mobile
+    const toggleBtn = document.getElementById("navbarToggle");
+    const links = document.getElementById("navbarLinks");
+    const buttons = document.getElementById("navbarButtons");
+    let isOpen = false;
+
+    toggleBtn.addEventListener("click", () => {
+      isOpen = !isOpen;
+      links.classList.toggle("show");
+      buttons.classList.toggle("show");
+      toggleBtn.innerHTML = isOpen ? "&times;" : "&#9776;";
+    });
+  </script>
+
+  <!-- Methodology Content -->
+  <section class="benefits">
+    <h2>🔬 Our Methodology</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>📊 Data Collection</h3>
+        <p>Comprehensive dataset of traffic signs from multiple countries and conditions, ensuring robust real-world performance.</p>
+      </div>
+      <div class="card">
+        <h3>🧠 Model Architecture</h3>
+        <p>Optimized CNN architecture designed for lightweight deployment while maintaining high accuracy across diverse sign types.</p>
+      </div>
+      <div class="card">
+        <h3>⚡ Preprocessing</h3>
+        <p>Advanced image preprocessing pipeline including normalization, resizing, and augmentation for improved model generalization.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="program">
+    <h2>Training Process</h2>
+    <ul>
+      <li>✅ Data augmentation techniques to increase dataset diversity</li>
+      <li>✅ Transfer learning from pre-trained models for faster convergence</li>
+      <li>✅ Cross-validation to ensure model robustness</li>
+      <li>✅ Hyperparameter tuning for optimal performance</li>
+      <li>✅ Model quantization for edge device deployment</li>
+    </ul>
+  </section>
+
+  <!-- Flowchart Section -->
+  <section class="pricing">
+    <h2>🔄 SignSight Workflow</h2>
+    <div class="offer">
+      <h3>📊 Process Flow Diagram</h3>
+      <p class="limited">Complete pipeline from image input to classification output</p>
+      
+      <div style="text-align: center; margin: 2rem 0;">
+        <!-- HTML/CSS Flowchart -->
+        <div style="max-width: 800px; margin: 0 auto; padding: 20px; background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); border-radius: 15px; border: 2px solid #FFD700;">
+          <!-- Title -->
+          <h4 style="color: #FFD700; margin-bottom: 30px; text-align: center;">SignSight Process Flow</h4>
+          
+          <!-- Flow Steps -->
+          <div style="display: flex; flex-direction: column; gap: 20px;">
+            
+            <!-- Step 1: Image Input -->
+            <div style="display: flex; align-items: center; justify-content: center; gap: 15px;">
+              <div style="background: linear-gradient(45deg, #FFD700, #FFA500); color: #000; padding: 15px 25px; border-radius: 25px; font-weight: bold; min-width: 200px; text-align: center; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);">
+                📤 Image Upload
+              </div>
+              <div style="color: #FFD700; font-size: 24px;">↓</div>
+            </div>
+            
+            <!-- Step 2: Preprocessing -->
+            <div style="display: flex; align-items: center; justify-content: center; gap: 15px;">
+              <div style="background: linear-gradient(45deg, #4CAF50, #45a049); color: white; padding: 15px 25px; border-radius: 25px; font-weight: bold; min-width: 200px; text-align: center; box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);">
+                🔧 Preprocessing<br><small>30x30 RGB</small>
+              </div>
+              <div style="color: #FFD700; font-size: 24px;">↓</div>
+            </div>
+            
+            <!-- Step 3: Feature Extraction -->
+            <div style="display: flex; align-items: center; justify-content: center; gap: 15px;">
+              <div style="background: linear-gradient(45deg, #2196F3, #1976D2); color: white; padding: 15px 25px; border-radius: 25px; font-weight: bold; min-width: 200px; text-align: center; box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);">
+                🧠 CNN Layers<br><small>Feature Extraction</small>
+              </div>
+              <div style="color: #FFD700; font-size: 24px;">↓</div>
+            </div>
+            
+            <!-- Step 4: Classification -->
+            <div style="display: flex; align-items: center; justify-content: center; gap: 15px;">
+              <div style="background: linear-gradient(45deg, #9C27B0, #7B1FA2); color: white; padding: 15px 25px; border-radius: 25px; font-weight: bold; min-width: 200px; text-align: center; box-shadow: 0 4px 15px rgba(156, 39, 176, 0.3);">
+                🎯 Classification<br><small>Dense Layers</small>
+              </div>
+              <div style="color: #FFD700; font-size: 24px;">↓</div>
+            </div>
+            
+            <!-- Step 5: Confidence Check -->
+            <div style="display: flex; align-items: center; justify-content: center; gap: 15px;">
+              <div style="background: linear-gradient(45deg, #FF9800, #F57C00); color: white; padding: 15px 25px; border-radius: 25px; font-weight: bold; min-width: 200px; text-align: center; box-shadow: 0 4px 15px rgba(255, 152, 0, 0.3);">
+                ✅ Confidence Check<br><small>Threshold: 0.5</small>
+              </div>
+              <div style="color: #FFD700; font-size: 24px;">↓</div>
+            </div>
+            
+            <!-- Step 6: Output -->
+            <div style="display: flex; align-items: center; justify-content: center;">
+              <div style="background: linear-gradient(45deg, #F44336, #D32F2F); color: white; padding: 15px 25px; border-radius: 25px; font-weight: bold; min-width: 200px; text-align: center; box-shadow: 0 4px 15px rgba(244, 67, 54, 0.3);">
+                📊 Prediction Result<br><small>Class + Confidence</small>
+              </div>
+            </div>
+            
+          </div>
+          
+          <!-- Technical Details -->
+          <div style="margin-top: 30px; padding: 20px; background: rgba(255, 215, 0, 0.1); border-radius: 10px; border: 1px solid #FFD700;">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; text-align: center;">
+              <div style="color: #FFD700;">
+                <strong>Input:</strong><br>RGB Images
+              </div>
+              <div style="color: #FFD700;">
+                <strong>Classes:</strong><br>43 Traffic Signs
+              </div>
+              <div style="color: #FFD700;">
+                <strong>Framework:</strong><br>TensorFlow/Keras
+              </div>
+              <div style="color: #FFD700;">
+                <strong>Accuracy:</strong><br>95%+
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      
+      <div style="text-align: left; margin-top: 1.5rem;">
+        <h4 style="color: #FFD700; margin-bottom: 1rem;">🔍 Workflow Description:</h4>
+        <ul style="list-style: none; padding: 0;">
+          <li style="margin: 0.5rem 0;"><strong>1. Image Input:</strong> User uploads traffic sign image through web interface</li>
+          <li style="margin: 0.5rem 0;"><strong>2. Preprocessing:</strong> Image resized to 30x30 pixels and normalized (0-1 range)</li>
+          <li style="margin: 0.5rem 0;"><strong>3. Feature Extraction:</strong> CNN layers extract hierarchical features from the image</li>
+          <li style="margin: 0.5rem 0;"><strong>4. Classification:</strong> Dense layers process features to predict sign category</li>
+          <li style="margin: 0.5rem 0;"><strong>5. Confidence Check:</strong> Model confidence evaluated against threshold (0.5)</li>
+          <li style="margin: 0.5rem 0;"><strong>6. Output:</strong> Return predicted class and confidence score to user</li>
+        </ul>
+      </div>
+      
+      <p class="secure">🎯 The flowchart illustrates our end-to-end traffic sign recognition system</p>
+    </div>
+  </section>
+
+  <section class="testimonials">
+    <h2>Technical Specifications</h2>
+    <div class="cards">
+      <div class="card">
+        <p><strong>Input Size:</strong> 30x30 RGB images</p>
+        <p><strong>Model Type:</strong> Convolutional Neural Network</p>
+        <h4>— Architecture Details</h4>
+      </div>
+      <div class="card">
+        <p><strong>Accuracy:</strong> 95%+ on test dataset</p>
+        <p><strong>Inference Time:</strong> < 100ms on CPU</p>
+        <h4>— Performance Metrics</h4>
+      </div>
+      <div class="card">
+        <p><strong>Classes:</strong> 43 traffic sign categories</p>
+        <p><strong>Framework:</strong> TensorFlow/Keras</p>
+        <h4>— Implementation</h4>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

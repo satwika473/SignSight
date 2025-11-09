@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About - SignSight</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='About.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='Navbar.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+<nav class="navbar">
+    <div class="navbar-logo" onclick="window.location.href='/'" style="cursor:pointer;">
+      <span class="logo-icon">🚦</span> SignSight
+    </div>
+
+    <!-- Hamburger toggle button -->
+    <button class="navbar-toggle" id="navbarToggle">&#9776;</button>
+
+    <!-- Links -->
+    <ul class="navbar-links" id="navbarLinks">
+      <li><a href="/">Home</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/methodology">Methodology</a></li>
+      <li><a href="/datasets">Datasets</a></li>
+    </ul>
+
+    <!-- Buttons -->
+    <div class="navbar-buttons" id="navbarButtons">
+      <button class="btn-get-started" onclick="window.location.href='/#achat'">Quick Test</button>
+    </div>
+  </nav>
+
+  <script>
+    // Toggle menu for mobile
+    const toggleBtn = document.getElementById("navbarToggle");
+    const links = document.getElementById("navbarLinks");
+    const buttons = document.getElementById("navbarButtons");
+    let isOpen = false;
+
+    toggleBtn.addEventListener("click", () => {
+      isOpen = !isOpen;
+      links.classList.toggle("show");
+      buttons.classList.toggle("show");
+      toggleBtn.innerHTML = isOpen ? "&times;" : "&#9776;";
+    });
+  </script>
+
+  <!-- Hero Section -->
+  <header class="hero">
+    <div class="overlay"></div>
+    <div class="hero-content">
+      <h1>🚦 About SignSight</h1>
+      <p>Revolutionizing traffic safety through advanced AI-powered sign recognition technology</p>
+    </div>
+  </header>
+
+  <!-- Mission Section -->
+  <section class="benefits">
+    <h2>Our Mission</h2>
+    <div class="cards">
+      <div class="card">
+        <h3><i class="fas fa-eye"></i> Vision</h3>
+        <p>To create safer roads by providing accurate, real-time traffic sign recognition that assists drivers and powers autonomous systems.</p>
+      </div>
+      <div class="card">
+        <h3><i class="fas fa-road"></i> Innovation</h3>
+        <p>Leveraging cutting-edge machine learning to deliver lightweight, efficient models that work on edge devices and mobile platforms.</p>
+      </div>
+      <div class="card">
+        <h3><i class="fas fa-users"></i> Impact</h3>
+        <p>Empowering developers, researchers, and transportation authorities with accessible AI tools for smarter city infrastructure.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Overview Section -->
+  <section class="program">
+    <h2>🔬 Technical Overview</h2>
+    <div style="max-width: 1000px; margin: 0 auto; text-align: left; background: rgba(255,255,255,0.05); padding: 2rem; border-radius: 15px; border: 1px solid rgba(255,215,0,0.3);">
+      <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
+        Accurate recognition of traffic signs is a foundation of contemporary autonomous driving systems, and it is an 
+        important factor in road safety, lawful driving, and informed vehicle control. However, developing high reliability 
+        in operational environments is still a significant challenge. Poor weather conditions, partial occlusion by other 
+        cars or obstacles, and the small appearance of traffic signs tend to face many challenges and fail to provide 
+        consistent detection.
+      </p>
+      
+      <h3 style="color: #FFD700; margin: 1.5rem 0 1rem 0;">🚀 SignSight Framework</h3>
+      <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
+        SignSight introduces a strong deep learning framework for real-time perception of traffic sign recognition to 
+        address these challenges through a hybrid deep learning architecture. The approach combines conventional CNNs 
+        with Keras for initial classification complemented with a YOLOv8 detection pipeline for accurate spatial 
+        localization and real-time prediction.
+      </p>
+      
+      <h3 style="color: #FFD700; margin: 1.5rem 0 1rem 0;">🎯 Advanced Features</h3>
+      <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
+        Compared to state-of-the-art models, SignSight includes weather-robust preprocessing methods and taps into 
+        small-object detection improvements. Taking cues from recent research such as YOLO-BS and MASG-Net, our approach 
+        utilizes multiscale feature learning along with context-aware modules to enhance detection of small sized and 
+        blurred traffic signs.
+      </p>
+      
+      <h3 style="color: #FFD700; margin: 1.5rem 0 1rem 0;">📊 Performance Metrics</h3>
+      <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
+        Our unified system reached a highest classification accuracy of <strong style="color: #FFD700;">97.4%</strong>, 
+        with real-time performance ensured across diverse operational conditions.
+      </p>
+      
+      <div style="background: rgba(0,0,0,0.2); padding: 1.5rem; border-radius: 10px; margin-top: 2rem;">
+        <h4 style="color: #FFD700; margin-bottom: 1rem;">🔧 Technical Stack</h4>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+          <div><strong>Architecture:</strong> CNN + YOLOv8</div>
+          <div><strong>Framework:</strong> Keras & TensorFlow</div>
+          <div><strong>Dataset:</strong> GTSRB Enhanced</div>
+          <div><strong>Features:</strong> BiFPN, Multiscale Learning</div>
+          <div><strong>Processing:</strong> Weather-Robust Preprocessing</div>
+          <div><strong>Detection:</strong> Small-Object Optimization</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technology Section -->
+  <section class="program">
+    <h2>What Makes SignSight Special</h2>
+    <ul>
+      <li>🎯 <strong>High Accuracy:</strong> 95%+ recognition rate across 43 traffic sign categories</li>
+      <li>⚡ <strong>Fast Inference:</strong> Under 100ms processing time on standard hardware</li>
+      <li>📱 <strong>Edge Optimized:</strong> Designed for mobile and embedded systems</li>
+      <li>🌍 <strong>Global Ready:</strong> Trained on international traffic sign standards</li>
+      <li>🔧 <strong>Easy Integration:</strong> Simple REST API for quick deployment</li>
+    </ul>
+  </section>
+
+  <!-- Team Section -->
+  <section class="testimonials">
+    <h2>The Technology</h2>
+    <div class="cards">
+      <div class="card">
+        <p><i class="fas fa-brain" style="font-size: 2rem; color: #FFD700;"></i></p>
+        <p><strong>Deep Learning Architecture</strong></p>
+        <p>Convolutional Neural Networks optimized for traffic sign classification with transfer learning techniques.</p>
+        <h4>— AI Foundation</h4>
+      </div>
+      <div class="card">
+        <p><i class="fas fa-database" style="font-size: 2rem; color: #FFD700;"></i></p>
+        <p><strong>Comprehensive Dataset</strong></p>
+        <p>50,000+ images across 43 categories with robust data augmentation and quality validation.</p>
+        <h4>— Data Excellence</h4>
+      </div>
+      <div class="card">
+        <p><i class="fas fa-cogs" style="font-size: 2rem; color: #FFD700;"></i></p>
+        <p><strong>Production Ready</strong></p>
+        <p>Deployment-optimized with confidence thresholds, error handling, and scalable infrastructure.</p>
+        <h4>— Enterprise Grade</h4>
+      </div>
+    </div>
+  </section>
+
+  <!-- Applications Section -->
+  <section class="pricing">
+    <h2>Applications & Use Cases</h2>
+    <div class="offer">
+      <h3><i class="fas fa-car"></i> Smart Transportation</h3>
+      <p class="price">Multiple Use Cases</p>
+      <div style="text-align: left; max-width: 600px; margin: 0 auto;">
+        <p>🚗 <strong>Driver Assistance Systems:</strong> Real-time sign recognition for ADAS</p>
+        <p>🤖 <strong>Autonomous Vehicles:</strong> Critical component for self-driving car navigation</p>
+        <p>🏙️ <strong>Smart Cities:</strong> Traffic monitoring and urban planning insights</p>
+        <p>📱 <strong>Mobile Apps:</strong> Educational tools and driving assistance applications</p>
+        <p>🚚 <strong>Fleet Management:</strong> Compliance monitoring and route optimization</p>
+      </div>
+      <p class="secure">🔒 Reliable performance across diverse conditions</p>
+    </div>
+  </section>
+
+  <!-- Values Section -->
+  <section class="benefits">
+    <h2>Our Values</h2>
+    <div class="cards">
+      <div class="card">
+        <h3><i class="fas fa-shield-alt"></i> Safety First</h3>
+        <p>Every algorithm is designed with road safety as the primary concern, ensuring reliable performance in critical situations.</p>
+      </div>
+      <div class="card">
+        <h3><i class="fas fa-lightbulb"></i> Innovation</h3>
+        <p>Continuously pushing the boundaries of what's possible in computer vision and traffic sign recognition.</p>
+      </div>
+      <div class="card">
+        <h3><i class="fas fa-handshake"></i> Accessibility</h3>
+        <p>Making advanced AI technology accessible to developers, researchers, and organizations of all sizes.</p>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
