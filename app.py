@@ -24,7 +24,7 @@ class_names = [
 
 
 # --- Confidence Threshold ---
-CONFIDENCE_THRESHOLD = 0.5  # You can adjust this value as needed
+CONFIDENCE_THRESHOLD = 0.7  # You can adjust this value as needed
 
 # --- Load Keras Model ---
 MODEL_PATH = os.path.join(os.path.dirname(__file__), "best_model.h5")
