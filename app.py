@@ -24,7 +24,7 @@ class_names = [
 
 
 # --- Confidence Threshold ---
-CONFIDENCE_THRESHOLD = 0.5  # You can adjust this value as needed
+CONFIDENCE_THRESHOLD = 0.7  # You can adjust this value as needed
 
 # --- Load Keras Model ---
 MODEL_PATH = os.path.join(os.path.dirname(__file__), "best_model.h5")
@@ -110,5 +110,6 @@ def predict():
         return jsonify({"error": str(e)}), 500
 
 if __name__ == "__main__":
-    print("🚀 Server running at: http://127.0.0.1:5000")
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    print(f"🚀 Server running at: http://0.0.0.0:{port}")
+    app.run(host="0.0.0.0", port=port, debug=False)
